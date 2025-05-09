@@ -1,0 +1,14 @@
+name: spring-petclinic
+
+packages:
+  - path: org.springframework.samples.petclinic
+  - path: org.springframework.web.filter
+    methods:
+      - class: CommonsRequestLoggingFilter
+        name: (before|after)Request
+        labels: [log]
+  - path: org.springframework.security.web.authentication
+    methods:
+      - class: UsernamePasswordAuthenticationFilter
+        name: obtainPassword
+        labels: [secret]

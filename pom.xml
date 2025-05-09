@@ -152,6 +152,12 @@
       <artifactId>jakarta.xml.bind-api</artifactId>
     </dependency>
 
+    <dependency>
+        <groupId>com.appland</groupId>
+        <artifactId>appmap-annotation</artifactId>
+        <version>1.28.0</version>
+    </dependency>
+
   </dependencies>
 
   <build>
