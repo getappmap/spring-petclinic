@@ -9436,6 +9436,11 @@ strong {
   border-bottom: 0;
   border-left: 0;
   border-right: 0; }
+  .navbar .right {
+    margin-left: auto; }
+
+.nav {
+  width: 100%; }
 
 .navbar a.navbar-brand {
   background: url("../images/spring-logo-dataflow.png") -1px -1px no-repeat;
@@ -9459,7 +9464,8 @@ strong {
 .navbar a.navbar-brand:hover span {
   opacity: 1; }
 
-.navbar li > a, .navbar-text {
+.navbar li > a,
+.navbar-text {
   font-family: "montserratregular", sans-serif;
   text-shadow: none;
   font-size: 14px;
