@@ -53,3 +53,25 @@ CREATE TABLE IF NOT EXISTS visits (
   description VARCHAR(255),
   FOREIGN KEY (pet_id) REFERENCES pets(id)
 ) engine=InnoDB;
+
+CREATE TABLE IF NOT EXISTS roles (
+  id   INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(80) NOT NULL UNIQUE
+) ENGINE=InnoDB;
+CREATE INDEX IF NOT EXISTS idx_roles_name ON roles (name);
+
+CREATE TABLE IF NOT EXISTS users (
+  id       INT AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(80) NOT NULL UNIQUE,
+  password VARCHAR(255) NOT NULL,
+  enabled  BOOLEAN DEFAULT TRUE NOT NULL
+) ENGINE=InnoDB;
+CREATE INDEX IF NOT EXISTS idx_users_username ON users (username);
+
+CREATE TABLE IF NOT EXISTS users_roles (
+  user_id INT NOT NULL,
+  role_id INT NOT NULL,
+  PRIMARY KEY (user_id, role_id),
+  FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE,
+  FOREIGN KEY (role_id) REFERENCES roles (id) ON DELETE CASCADE
+) ENGINE=InnoDB;

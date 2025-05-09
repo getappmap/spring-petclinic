@@ -51,3 +51,13 @@ INSERT IGNORE INTO visits VALUES (1, 7, '2010-03-04', 'rabies shot');
 INSERT IGNORE INTO visits VALUES (2, 8, '2011-03-04', 'rabies shot');
 INSERT IGNORE INTO visits VALUES (3, 8, '2009-06-04', 'neutered');
 INSERT IGNORE INTO visits VALUES (4, 7, '2008-09-04', 'spayed');
+
+INSERT IGNORE INTO roles VALUES (1, 'ROLE_USER');
+INSERT IGNORE INTO roles VALUES (2, 'ROLE_ADMIN');
+
+-- The password is "password" encoded with bcrypt, for development purposes only
+INSERT IGNORE INTO users VALUES (1, 'admin', '$2a$12$34gXhmF2aGTUsJqINxzTyusB3n4pOQ2nvTc45K/kjsc0WeJQo1T3a', TRUE);
+INSERT IGNORE INTO users VALUES (2, 'user', '$2a$12$34gXhmF2aGTUsJqINxzTyusB3n4pOQ2nvTc45K/kjsc0WeJQo1T3a', TRUE);
+
+INSERT IGNORE INTO users_roles VALUES (1, 2);
+INSERT IGNORE INTO users_roles VALUES (2, 1);

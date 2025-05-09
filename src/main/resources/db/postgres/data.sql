@@ -51,3 +51,13 @@ INSERT INTO visits (pet_id, visit_date, description) SELECT 7, '2010-03-04', 'ra
 INSERT INTO visits (pet_id, visit_date, description) SELECT 8, '2011-03-04', 'rabies shot' WHERE NOT EXISTS (SELECT * FROM visits WHERE id=2);
 INSERT INTO visits (pet_id, visit_date, description) SELECT 8, '2009-06-04', 'neutered' WHERE NOT EXISTS (SELECT * FROM visits WHERE id=3);
 INSERT INTO visits (pet_id, visit_date, description) SELECT 7, '2008-09-04', 'spayed' WHERE NOT EXISTS (SELECT * FROM visits WHERE id=4);
+
+INSERT INTO roles (name) SELECT 'ROLE_USER' WHERE NOT EXISTS (SELECT * FROM roles WHERE name='ROLE_USER');
+INSERT INTO roles (name) SELECT 'ROLE_ADMIN' WHERE NOT EXISTS (SELECT * FROM roles WHERE name='ROLE_ADMIN');
+
+-- The password is "password" encoded with bcrypt, for development purposes only
+INSERT INTO users (username, password, enabled) SELECT 'admin', '$2a$12$34gXhmF2aGTUsJqINxzTyusB3n4pOQ2nvTc45K/kjsc0WeJQo1T3a', TRUE WHERE NOT EXISTS (SELECT * FROM users WHERE username='admin');
+INSERT INTO users (username, password, enabled) SELECT 'user', '$2a$12$34gXhmF2aGTUsJqINxzTyusB3n4pOQ2nvTc45K/kjsc0WeJQo1T3a', TRUE WHERE NOT EXISTS (SELECT * FROM users WHERE username='user');
+
+INSERT INTO users_roles (user_id, role_id) SELECT 1, 2 WHERE NOT EXISTS (SELECT * FROM users_roles WHERE user_id=1 AND role_id=2);
+INSERT INTO users_roles (user_id, role_id) SELECT 2, 1 WHERE NOT EXISTS (SELECT * FROM users_roles WHERE user_id=2 AND role_id=1);

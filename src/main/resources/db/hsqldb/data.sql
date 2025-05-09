@@ -51,3 +51,13 @@ INSERT INTO visits VALUES (1, 7, '2013-01-01', 'rabies shot');
 INSERT INTO visits VALUES (2, 8, '2013-01-02', 'rabies shot');
 INSERT INTO visits VALUES (3, 8, '2013-01-03', 'neutered');
 INSERT INTO visits VALUES (4, 7, '2013-01-04', 'spayed');
+
+INSERT INTO roles VALUES (1, 'ROLE_USER');
+INSERT INTO roles VALUES (2, 'ROLE_ADMIN');
+
+-- The password is "password" encoded with bcrypt, for development purposes only
+INSERT INTO users VALUES (1, 'admin', '$2a$12$34gXhmF2aGTUsJqINxzTyusB3n4pOQ2nvTc45K/kjsc0WeJQo1T3a', TRUE);
+INSERT INTO users VALUES (2, 'user', '$2a$12$34gXhmF2aGTUsJqINxzTyusB3n4pOQ2nvTc45K/kjsc0WeJQo1T3a', TRUE);
+
+INSERT INTO users_roles VALUES (1, 2);
+INSERT INTO users_roles VALUES (2, 1);
