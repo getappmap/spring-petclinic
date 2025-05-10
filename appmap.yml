@@ -1,5 +1,5 @@
 name: spring-petclinic
-
+language: java
 packages:
   - path: org.springframework.samples.petclinic
   - path: org.springframework.web.filter
@@ -12,3 +12,7 @@ packages:
       - class: UsernamePasswordAuthenticationFilter
         name: obtainPassword
         labels: [secret]
+test_commands:
+  - language: java
+    command: ./mvnw test -Dtest=$(test_class)
+    shell: bash
