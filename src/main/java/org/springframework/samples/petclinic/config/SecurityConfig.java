@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
@@ -37,6 +38,10 @@ public class SecurityConfig {
 
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+		var successHandler = new SavedRequestAwareAuthenticationSuccessHandler();
+		successHandler.setDefaultTargetUrl("/");
+		successHandler.setUseReferer(false);
+
 		http.authorizeHttpRequests(authorize -> authorize.requestMatchers("/", "/oups", "/error")
 			.permitAll()
 			.requestMatchers("/webjars/**", "/css/**", "/js/**", "/images/**", "/resources/**")
@@ -45,7 +50,7 @@ public class SecurityConfig {
 			.hasRole("ADMIN")
 			.anyRequest()
 			.authenticated())
-			.formLogin(formLogin -> formLogin.permitAll().defaultSuccessUrl("/", true))
+			.formLogin(formLogin -> formLogin.permitAll().successHandler(successHandler))
 			.logout(logout -> logout.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 				.logoutSuccessUrl("/?logout")
 				.permitAll());
