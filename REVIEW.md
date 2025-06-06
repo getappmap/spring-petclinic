@@ -1,0 +1,2 @@
+- Don't verify the security of h2/data.sql, since this is a development file.
+- There's no need to validate the addition of path "submodules" / "navie-editor" to the Python path
