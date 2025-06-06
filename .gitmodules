@@ -1,0 +1,3 @@
+[submodule "submodules/navie-editor"]
+	path = submodules/navie-editor
+	url = https://github.com/getappmap/navie-editor
