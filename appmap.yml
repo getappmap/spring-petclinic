@@ -1,18 +1,6 @@
-name: spring-petclinic
-language: java
+name: "spring-petclinic"
+language: "java"
 packages:
-  - path: org.springframework.samples.petclinic
-  - path: org.springframework.web.filter
-    methods:
-      - class: CommonsRequestLoggingFilter
-        name: (before|after)Request
-        labels: [log]
-  - path: org.springframework.security.web.authentication
-    methods:
-      - class: UsernamePasswordAuthenticationFilter
-        name: obtainPassword
-        labels: [secret]
-test_commands:
-  - language: java
-    command: ./mvnw test -Dtest=$(test_class)
-    shell: bash
+- path: "org.springframework.samples.petclinic"
+- path: "org.springframework.boot"
+appmap_dir: "tmp/appmap"
